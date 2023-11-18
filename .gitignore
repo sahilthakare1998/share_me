@@ -1,2 +1,3 @@
 # dependencies
-/node_modules
+shareme_backend/shareappgsm/node_modules
+shareme_frontend/node_modules
