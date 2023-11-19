@@ -1,18 +1,38 @@
 import React from 'react';
 import GoogleLogin from  'react-google-login';
-import {useNavigation} from 'react-router-dom';
+import {useNavigation, Navigate, useNavigate} from 'react-router-dom';
 import {FcGoogle} from 'react-icons/fc';
 import shareVideo from  '../assets/share.mp4';
 import logo from  '../assets/logowhite.png';
+import { client } from '../container/client';
+import { v4 as uuidv4 } from 'uuid';
+import avatar from  '../assets/avatar.png';
 
 
 const Login = () => {
+    const navigate = useNavigate();
+    const userId = uuidv4();
+    const responseGoogle = (response) =>{
+        
+        let user = {name:`user-${userId}`, googleId:userId, imageUrl: "https://api.slingacademy.com/public/sample-photos/1.jpeg"};
+        localStorage.setItem('user', user)
+        
+        const {name,googleId,imageUrl} = user;
+        
+        const doc={
+            _id:googleId,
+            _type:'user',
+            userName:name,
+            image:imageUrl
+        }
 
-    const responseGoogle =(response)=>{
-        console.log('herrre')
+        client.createIfNotExists(doc).then(()=>{
+            navigate('/',{replace:true})
+        })
 
-        console.log(response)
     }
+
+   
     return (
         <div className ="flex justify-start item-center flex-col h-screen">
            <div className="relative w-full h-full">
@@ -37,18 +57,16 @@ const Login = () => {
                 render={(renderProps)=>(
                     <button type="button"
                     className="bg-mainColor flex justify-center iems-center p-3 rounded-lg cursor-pointer outline-none"
-                    onClick={renderProps.onClick}
+                    onClick={responseGoogle}
                     disabled={renderProps.disabled}
                     >
                         <FcGoogle className="mr-4" />
                     Sign-in with goggle
                     </button>
                 )}
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
                 cookiePolicy="single_host_origin"
                 />
-                            </div>
+            </div>
            </div>
            </div>
         </div>
