@@ -15,7 +15,7 @@ const Login = () => {
     const responseGoogle = (response) =>{
         
         let user = {name:`user-${userId}`, googleId:userId, imageUrl: "https://api.slingacademy.com/public/sample-photos/1.jpeg"};
-        localStorage.setItem('user', user)
+        localStorage.setItem('user', JSON.stringify(user))
         
         const {name,googleId,imageUrl} = user;
         
