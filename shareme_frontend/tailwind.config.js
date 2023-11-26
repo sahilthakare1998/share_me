@@ -83,7 +83,7 @@ module.exports = {
     cursor: {
       'zoom-in': 'zoom-in',
       pointer: 'pointer',
-    },
+    }
   },
   variants: {
     // backgroundColor: ['active'],

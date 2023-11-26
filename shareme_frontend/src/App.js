@@ -5,7 +5,7 @@ import Home from './container/Home';
 
 const App = () => {
     return (
-        <h1 className="text-3xl font-bold underline">
+        <h1 className="text-3xl font-bold">
           <Routes>
             <Route path="login" element={<Login />} />
             <Route path="/*" element={<Home />} />
