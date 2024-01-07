@@ -9,7 +9,7 @@ import {client} from './client';
 import logo from '../assets/logo.png';
 import avatar from '../assets/avatar.png';
 
-import userQuery from '../utils/data';
+import {userQuery} from '../utils/data';
 
 const Home = () => {
     const [toggleSidebar, setToggleSidebar] = useState(false);    
