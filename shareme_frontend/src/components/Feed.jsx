@@ -3,7 +3,7 @@ import MasonaryLayout from './MasonaryLayout';
 import Spinner from './Spinner';
 import { useParams } from 'react-router-dom';
 import {searchQuery, feedQuery} from '../utils/data';
-import { client } from '../container/client';
+import { client } from '../client';
 
 const Feed = () => {
     const [pins, setPins] = useState();
@@ -27,7 +27,7 @@ const Feed = () => {
             })
         }
         
-    },[]);
+    },[categoryId]);
 
     const ideaName = categoryId || 'new';
     if(loading){

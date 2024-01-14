@@ -3,7 +3,7 @@ import React from 'react'
 const PinDetail = () => {
     return (
         <div>
-            PinDetail
+            WEBPAGE IN CONSTRUCTION
         </div>
     )
 }
